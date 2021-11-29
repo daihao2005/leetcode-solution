@@ -1,70 +1,42 @@
-import java.util.*;
-
 public class Problem869 {
 
-    public static void main(String[] args) {
-
-        Problem869 s = new Problem869();
-        boolean r = s.reorderedPowerOf2(679213508);
-        System.out.println(r);
-
-    }
-
     public boolean reorderedPowerOf2(int n) {
-        int tmp = n;
-        int[] cnt = new int[10];
-
-        while (tmp > 0) {
-            int y = tmp % 10;
-            cnt[y]++;
-            tmp = tmp / 10;
+        int res = 0;
+        for (; n > 0; n /= 10) res += (int) Math.pow(10, n % 10);
+        switch (res) {
+            case 10:
+            case 100:
+            case 10000:
+            case 100000000:
+            case 1000010:
+            case 1100:
+            case 1010000:
+            case 100000110:
+            case 1100100:
+            case 100110:
+            case 10111:
+            case 100010101:
+            case 1001010001:
+            case 1100000110:
+            case 101011010:
+            case 111001100:
+            case 2201000:
+            case 10001121:
+            case 1020210:
+            case 200110200:
+            case 111110011:
+            case 1010100211:
+            case 1000031011:
+            case 401001001:
+            case 32000120:
+            case 223100:
+            case 212010011:
+            case 120011220:
+            case 102221100:
+            case 1111101111:
+                return true;
+            default:
+                return false;
         }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 10; i++) {
-            if (cnt[i] == 0) {
-                continue;
-            }
-
-            sb.append(i).append(cnt[i]);
-        }
-        String key = sb.toString();
-        Set<String> set = getAllMatchStr();
-        return set.contains(key);
     }
-
-    private Set<String> getAllMatchStr() {
-        Set<String> set = new HashSet<>();
-        set.add("11");
-        set.add("21");
-        set.add("41");
-        set.add("81");
-        set.add("1161");
-        set.add("2131");
-        set.add("4161");
-        set.add("112181");
-        set.add("215161");
-        set.add("112151");
-        set.add("01112141");
-        set.add("01214181");
-        set.add("01416191");
-        set.add("11218191");
-        set.add("1131416181");
-        set.add("2131617181");
-        set.add("315262");
-        set.add("0112213171");
-        set.add("11224261");
-        set.add("22415182");
-        set.add("01114151617181");
-        set.add("011122517191");
-        set.add("0111314391");
-        set.add("01316184");
-        set.add("12216273");
-        set.add("21334252");
-        set.add("011141627182");
-        set.add("122231417281");
-        set.add("213142526281");
-        set.add("011121315161718191");
-        return set;
-    }
-
 }
